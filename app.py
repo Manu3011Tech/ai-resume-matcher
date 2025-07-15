@@ -25,44 +25,89 @@ bg_image = get_base64_bg("assets/background.png")
 # Inject custom CSS with ALL requested fixes
 st.markdown(f"""
     <style>
-    /* Set dark background */
-    .stApp {{
-        background: #0a192f;
-        background-image: url("data:image/png;base64,{bg_image}");
-        background-size: cover;
-        background-attachment: fixed;
+    /* 🌌 Background and main layout */
+    .stApp, .main, .block-container {{
+        background: #0a192f !important;
+        background-image: url("data:image/png;base64,{bg_image}") !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }}
 
-    /* Text color default */
-    body, p, span, label, div, h1, h2, h3, h4, h5, h6 {{
+    /* 🌟 Make all general text white */
+    body, p, div, span, h1, h2, h3, h4, h5, h6 {{
         color: white !important;
+        text-shadow: 1px 1px 3px #000 !important;
     }}
 
-    /* 🔳 Make 3-dots menu (Share) white bg + black text */
-    ul[role="menu"] {{
+    /* ✍ Input fields - white background, black text */
+    .stTextArea textarea, 
+    .stTextInput input, 
+    .stFileUploader input {{
         background-color: white !important;
-    }}
-    ul[role="menu"] li span {{
         color: black !important;
-        font-weight: 500 !important;
     }}
 
-    /* 🧩 Top-right icons (GitHub, Edit, etc.) white */
-    header svg, header path {{
-        fill: white !important;
-        stroke: white !important;
+    /* 📁 Uploaded file names - black text */
+    .stFileUploader .uploadedFileName,
+    .stFileUploader .st-emotion-cache-1ltr798,
+    .stFileUploader .st-emotion-cache-1ltr798 span {{
+        color: black !important;
     }}
-    header button span {{
+
+    /* ⚙ TOP-RIGHT 3-dot menu (dropdown) - black text */
+    .stActionButton span, 
+    .stActionButton label, 
+    .stActionButton div, 
+    .st-emotion-cache-1y4p8pa, 
+    .st-emotion-cache-1y4p8pa * {{
+        color: black !important;
+    }}
+
+    /* 📤 File uploader label text */
+    div[data-testid="stFileUploader"] > label,
+    div[data-testid="stFileUploader"] > label > div,
+    div[data-testid="stFileUploader"] > label * {{
         color: white !important;
     }}
 
-    /* Optional: icon hover effect */
-    header button:hover svg {{
-        filter: brightness(150%);
+    /* 🎨 Button style */
+    .stButton > button, .stDownloadButton > button {{
+        background: #0066cc !important;
+        color: white !important;
+    }}
+
+    /* 📻 Radio & checkbox label text */
+    .stRadio label, .stCheckbox label, 
+    .stSelectbox label, .stTextInput label {{
+        color: white !important;
+    }}
+
+    /* 📌 Highlighted radio button */
+    .stRadio div:has(input:checked) {{
+        background: rgba(0, 102, 204, 0.2) !important;
+        border: 1px solid #0066cc !important;
+    }}
+
+    /* 📊 Result containers */
+    .stAlert, .stInfo, .stSuccess {{
+        background-color: rgba(144, 238, 144, 0.1) !important;
+        color: white !important;
+        border: 1px solid rgba(144, 238, 144, 0.3) !important;
+        border-radius: 10px !important;
+        padding: 0.8rem 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }}
+
+    /* 🔻 Reduce bottom space */
+    .element-container:has(.stAlert),
+    .element-container:has(.stInfo),
+    .element-container:has(.stSuccess) {{
+        margin-bottom: 0.5rem !important;
     }}
     </style>
 """, unsafe_allow_html=True)
-
 # Streamlit page config
 st.set_page_config(page_title="AI Resume Matcher", layout="centered")
 
