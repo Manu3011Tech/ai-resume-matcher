@@ -25,88 +25,87 @@ bg_image = get_base64_bg("assets/background.png")
 # Inject custom CSS with ALL requested fixes
 st.markdown(f"""
     <style>
-    /* Background */
-    .stApp {{
-        background-color: #0a192f !important;
+    /* 🌌 Background and main layout */
+    .stApp, .main, .block-container {{
+        background: #0a192f !important;
         background-image: url("data:image/png;base64,{bg_image}") !important;
         background-size: cover !important;
         background-attachment: fixed !important;
-        background-position: center;
+        padding: 0 !important;
+        margin: 0 !important;
     }}
 
-    /* Main container */
-    .block-container {{
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 20px;
-        padding: 2rem;
-        margin-top: 2rem;
-        box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+    /* 🌟 Make all general text white */
+    body, p, div, span, h1, h2, h3, h4, h5, h6 {{
+        color: white !important;
+        text-shadow: 1px 1px 3px #000 !important;
     }}
 
-    /* Headings */
-    h1, h2, h3, h4, h5 {{
-        color: #0a192f !important;
-        font-family: 'Segoe UI', sans-serif;
-        font-weight: 700;
-    }}
-
-    /* All regular text */
-    body, p, div, span, label {{
-        color: #000 !important;
-        font-family: 'Segoe UI', sans-serif;
-    }}
-
-    /* Input fields - white bg, black text */
-    textarea, input[type="text"], .stTextInput > div > div > input {{
+    /* ✍ Input fields - white background, black text */
+    .stTextArea textarea, 
+    .stTextInput input, 
+    .stFileUploader input {{
         background-color: white !important;
         color: black !important;
-        border-radius: 8px;
-        padding: 8px;
     }}
 
-    /* File uploader - white label, black file name */
-    div[data-testid="stFileUploader"] > label {{
-        color: white !important;
-        font-weight: bold;
-    }}
-    .uploadedFileName, .stFileUploader span {{
+    /* 📁 Uploaded file names - black text */
+    .stFileUploader .uploadedFileName,
+    .stFileUploader .st-emotion-cache-1ltr798,
+    .stFileUploader .st-emotion-cache-1ltr798 span {{
         color: black !important;
     }}
 
-    /* Buttons */
+    /* ⚙️ TOP-RIGHT 3-dot menu (dropdown) - black text */
+    .stActionButton span, 
+    .stActionButton label, 
+    .stActionButton div, 
+    .st-emotion-cache-1y4p8pa, 
+    .st-emotion-cache-1y4p8pa * {{
+        color: black !important;
+    }}
+
+    /* 📤 File uploader label text */
+    div[data-testid="stFileUploader"] > label,
+    div[data-testid="stFileUploader"] > label > div,
+    div[data-testid="stFileUploader"] > label * {{
+        color: white !important;
+    }}
+
+    /* 🎨 Button style */
     .stButton > button, .stDownloadButton > button {{
-        background-color: #0066cc !important;
+        background: #0066cc !important;
         color: white !important;
-        font-weight: 600;
-        border-radius: 10px;
-        padding: 8px 16px;
-        transition: all 0.3s ease;
-    }}
-    .stButton > button:hover, .stDownloadButton > button:hover {{
-        background-color: #004c99 !important;
-        color: #fff !important;
     }}
 
-    /* Radio button labels white */
-    .stRadio label, .stCheckbox label {{
+    /* 📻 Radio & checkbox label text */
+    .stRadio label, .stCheckbox label, 
+    .stSelectbox label, .stTextInput label {{
         color: white !important;
-        font-weight: 500;
     }}
 
-    /* Alert/info/success boxes */
-    .stAlert, .stSuccess, .stInfo {{
-        background-color: rgba(0, 102, 204, 0.1) !important;
-        color: #000 !important;
-        border-left: 4px solid #0066cc !important;
-        border-radius: 6px;
-        padding: 0.75rem 1rem;
+    /* 📌 Highlighted radio button */
+    .stRadio div:has(input:checked) {{
+        background: rgba(0, 102, 204, 0.2) !important;
+        border: 1px solid #0066cc !important;
     }}
 
-    /* Reduce spacing between widgets */
-    .element-container {{
-        margin-bottom: 0.75rem !important;
+    /* 📊 Result containers */
+    .stAlert, .stInfo, .stSuccess {{
+        background-color: rgba(144, 238, 144, 0.1) !important;
+        color: white !important;
+        border: 1px solid rgba(144, 238, 144, 0.3) !important;
+        border-radius: 10px !important;
+        padding: 0.8rem 1rem !important;
+        margin-bottom: 0.5rem !important;
     }}
 
+    /* 🔻 Reduce bottom space */
+    .element-container:has(.stAlert),
+    .element-container:has(.stInfo),
+    .element-container:has(.stSuccess) {{
+        margin-bottom: 0.5rem !important;
+    }}
     </style>
 """, unsafe_allow_html=True)
 
