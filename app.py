@@ -24,97 +24,111 @@ bg_image = get_base64_bg("assets/background.png")
 
 # Inject custom CSS with ALL requested fixes
 st.markdown(f"""
-<style>
-/* Main background styling */
-.stApp, .main, .block-container {{
-    background: #0a192f !important;
-    background-image: url("data:image/png;base64,{bg_image}") !important;
-    background-size: cover !important;
-    background-attachment: fixed !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}}
+    <style>
+    /* 🌌 Background */
+    .stApp, .main, .block-container {{
+        background: #0a192f !important;
+        background-image: url("data:image/png;base64,{bg_image}") !important;
+        background-size: cover !important;
+        background-attachment: fixed !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }}
 
-/* ALL text white by default */
-body, p, div, span, h1, h2, h3, h4, h5, h6 {{
-    color: white !important;
-    text-shadow: 1px 1px 3px #000 !important;
-}}
+    /* ✍️ Base font color white */
+    body, p, div, span, h1, h2, h3, h4, h5, h6 {{
+        color: white !important;
+        text-shadow: 1px 1px 3px #000 !important;
+    }}
 
-/* Input fields - white background, black text */
-.stTextArea textarea, 
-.stTextInput input, 
-.stFileUploader input {{
-    background-color: white !important;
-    color: black !important;
-}}
+    /* 📥 Inputs - white background, black text */
+    .stTextArea textarea, 
+    .stTextInput input, 
+    .stFileUploader input {{
+        background-color: white !important;
+        color: black !important;
+    }}
 
-/* ✅ Uploaded file name - black */
-.stFileUploader .uploadedFileName,
-.stFileUploader .st-emotion-cache-1ltr798 span {{
-    color: black !important;
-}}
+    /* ✅ Uploaded file name color black */
+    .stFileUploader .uploadedFileName,
+    .stFileUploader .st-emotion-cache-1ltr798,
+    .stFileUploader .st-emotion-cache-1ltr798 span {{
+        color: black !important;
+    }}
 
-/* ✅ Upload label text (white) */
-[data-testid="stFileUploader"] > label > div:first-child {{
-    color: white !important;
-}}
+    /* 📁 Upload labels in white */
+    div[data-testid="stFileUploader"] > label,
+    div[data-testid="stFileUploader"] > label > div,
+    div[data-testid="stFileUploader"] > label * {{
+        color: white !important;
+    }}
 
-/* ✅ Drag and drop text (black) */
-[data-testid="stFileUploader"] > label > div:nth-child(2) span {{
-    color: black !important;
-}}
+    /* 📌 Markdown labels white */
+    label[data-testid="stMarkdownContainer"] p {{
+        color: white !important;
+    }}
 
-/* Markdown label text white */
-label[data-testid="stMarkdownContainer"] p {{
-    color: white !important;
-}}
+    /* 🔘 Buttons */
+    .stButton > button, .stDownloadButton > button {{
+        background: #0066cc !important;
+        color: white !important;
+    }}
 
-/* Buttons */
-.stButton > button, .stDownloadButton > button {{
-    background: #0066cc !important;
-    color: white !important;
-}}
+    /* ✅ Radio/checkbox labels white */
+    .stRadio label, .stCheckbox label, 
+    .stSelectbox label, .stTextInput label {{
+        color: white !important;
+    }}
 
-/* Radio and checkbox labels */
-.stRadio label, .stCheckbox label, 
-.stSelectbox label, .stTextInput label {{
-    color: white !important;
-}}
+    /* 🎯 Selected radio option styling */
+    .stRadio div:has(input:checked) {{
+        background: rgba(0, 102, 204, 0.2) !important;
+        border: 1px solid #0066cc !important;
+    }}
 
-/* Selected radio option */
-.stRadio div:has(input:checked) {{
-    background: rgba(0, 102, 204, 0.2) !important;
-    border: 1px solid #0066cc !important;
-}}
+    /* 📊 Info/success messages styling */
+    .stAlert, .stInfo, .stSuccess {{
+        background-color: rgba(144, 238, 144, 0.1) !important;
+        color: white !important;
+        border: 1px solid rgba(144, 238, 144, 0.3) !important;
+        border-radius: 10px !important;
+        padding: 0.8rem 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }}
 
-/* Ensure input area (for drag) text remains black */
-.stTextInput {{
-    color: black !important;
-}}
-.stTextInput:hover, .stTextInput:focus {{
-    color: black !important;
-}}
+    /* Reduce space between sections */
+    .element-container:has(.stAlert),
+    .element-container:has(.stInfo),
+    .element-container:has(.stSuccess) {{
+        margin-bottom: 0.5rem !important;
+    }}
 
-/* Results boxes */
-.stAlert, .stInfo, .stSuccess {{
-    background-color: rgba(144, 238, 144, 0.1) !important;
-    color: white !important;
-    border: 1px solid rgba(144, 238, 144, 0.3) !important;
-    border-radius: 10px !important;
-    padding: 0.8rem 1rem !important;
-    margin-bottom: 0.5rem !important;
-}}
+    /* ⭐ FIX: Make Share dropdown menu text black on white */
+    ul[role="menu"] {{
+        background-color: white !important;
+        color: black !important;
+    }}
+    ul[role="menu"] li span {{
+        color: black !important;
+    }}
 
-/* Reduce space between result boxes */
-.element-container:has(.stAlert),
-.element-container:has(.stInfo),
-.element-container:has(.stSuccess) {{
-    margin-bottom: 0.5rem !important;
-}}
-</style>
+    /* 🛠 FIX: Make GitHub, edit, and top icons white */
+    header svg {{
+        fill: white !important;
+        stroke: white !important;
+    }}
+    header button svg {{
+        filter: brightness(5);  /* Force white on dark background */
+    }}
+    header div button span {{
+        color: white !important;
+    }}
+    header div button:hover svg,
+    header div button:focus svg {{
+        fill: #ffffff !important;
+    }}
+    </style>
 """, unsafe_allow_html=True)
-
 
 
 
